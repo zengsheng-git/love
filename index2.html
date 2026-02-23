@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>happy birthday</title>
+
+    <style type="text/css">
+        @font-face {
+            font-family: digit;
+            src: url('digital-7_mono.ttf') format("truetype");
+        }
+    </style>
+    <link href="./jscss/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./jscss/jquery.js"></script>
+    <script type="text/javascript" src="./jscss/garden.js"></script>
+    <script type="text/javascript" src="./jscss/functions.js"></script>
+</head>
+
+<body>
+
+    <audio id="bgmMusic" src="./jscss/srkl.mp3" preload="auto" type="audio/mp3" autoplay loop></audio>
+    <div id="mainDiv">
+        <div id="content">
+            <div id="code">
+                <span class="space"><span class="comments">*xxxx，生日快乐！</span><br>
+                    <span class="space"><span class="comments">*简简单单四个字，</span><br>
+                        <span class="space"> <span class="comments">*Happy birthday。</span><br>
+                            <span class="space"> <span class="comments">*我想现在你肯定笑了，</span><br>
+
+                                <span class="space"> <span class="comments">*但是我就是想告诉你：</span><br>
+                                    <span class="space"> <span class="comments">*当我在做这个礼物的时候，</span><br>
+
+                                        <span class="space"> <span class="comments">*晚上睡觉的时候都会乐醒来。</span><br>
+
+                                            <span class="space"><span class="comments">*因为我很期待你满脸的惊喜和幸福。</span><br>
+                                                <span class="space"> <span class="comments">*好像没有什么事能让我这么开心过。</span><br>
+
+                                                    <span class="space"> <span
+                                                            class="comments">*这次，我找到了，而且我做到了。</span><br>
+                                                        <span class="space"> <span class="keyword"></span> <span
+                                                                class="keyword">*没有相遇之前,</span><br>
+                                                            <span class="space"> <span
+                                                                    class="keyword">*错过你的生日我无能为力。</span><br>
+                                                                <span class="space"> <span
+                                                                        class="keyword">*可之后的生日我都要陪你走下去，<br>
+                                                                        <span class="space"> <span
+                                                                                class="keyword">*余生请允许我奉陪到底。</span><br>
+                                                                            <span class="placeholder"><span
+                                                                                    class="comments"></span><br>
+
+
+
+
+
+                                                                            </span></span></span></span></span></span></span>_
+            </div>
+            <div id="loveHeart">
+                <canvas id="garden" width="670" height="625"></canvas>
+                <div id="words" style="position: absolute; top: 257px; left: 765px;">
+                    <div id="messages" style="display: block;">
+                        <center>
+                            <script type="text/javascript"><!--
+google_ad_client = "ca-pub-3712320065678109";
+/* lovead */
+                                google_ad_slot = "0650322805";
+                                google_ad_width = 320;
+                                google_ad_height = 50;
+//-->
+                            </script>
+                        </center>你一直问我生日要什么礼物，我还是那句话：愿正在看这个网页的人。
+
+                        <div id="elapseClock" style="display:none"></div>
+                        <a href="Love.html" id="accept">如果你能如愿，请点击这里</a>
+                    </div>
+                    <div id="loveu" style="display: block;">
+                        希望那个女孩生日快乐，永远幸福！<br>
+                        <div class="signature">- zengsheng</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var offsetX = $("#loveHeart").width() / 2;
+        var offsetY = $("#loveHeart").height() / 2 - 55;
+
+        if (!document.createElement('canvas').getContext) {
+            var msg = document.createElement("div");
+            msg.id = "errorMsg";
+            msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+            document.body.appendChild(msg);
+            $("#code").css("display", "none")
+            $("#copyright").css("position", "absolute");
+            $("#copyright").css("bottom", "10px");
+            document.execCommand("stop");
+        } else {
+            setTimeout(function () {
+                adjustWordsPosition();
+                startHeartAnimation();
+            }, 10000);
+
+            $("#accept").click(function () {
+                $(this).hide();
+                $("#elapseClock").show();
+                var together = new Date();
+                timeElapse(together);
+                setInterval(function () {
+                    timeElapse(together);
+                }, 500);
+            })
+            adjustCodePosition();
+            $("#code").typewriter();
+        }
+    </script>
+    <audio src="生日快乐.mp3" autoplay></audio>
+
+</body>
+
+</html>

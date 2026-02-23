@@ -1,0 +1,185 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>生日祝福</title>
+<meta name="author" content="Mike">
+
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<!--导库-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- 图片幻灯片效果-->
+<script type="text/javascript" src="js/roundabout.js"></script>
+<script type="text/javascript" src="js/roundabout_shapes.js"></script>
+<script type="text/javascript" src="js/gallery_init.js"></script>
+<!-- 下雪-->
+<script type="text/javascript" src="js/snowstorm.js"></script>
+<!-- 打字机效果-->		
+<script type="text/javascript" src="js/text.js"></script>
+<!-- 画爱心-->
+<script type="text/javascript" src="js/ga.js" async=""></script>
+<script type="text/javascript" src="js/heart.js"></script>
+<!-- 移动div-->
+<script type="text/javascript" src="js/move.js"></script>
+<!-- 显示时间 -->
+<script type="text/javascript" src="js/time.js"></script>
+<!-- 设置文字跟随鼠标 -->
+<script type="text/javascript" src="js/makesnake.js"></script></head><body>
+<!-- thanks for watching! -->
+<span id="span0" class="spanstyle">T</span><span id="span1" class="spanstyle">h</span>
+<span id="span2" class="spanstyle">a</span><span id="span3" class="spanstyle">n</span>
+<span id="span4" class="spanstyle">k</span><span id="span5" class="spanstyle">s</span><span id="span6" class="spanstyle">
+ </span><span id="span7" class="spanstyle">f</span><span id="span8" class="spanstyle">o</span><span id="span9" class="spanstyle">r</span>
+ <span id="span10" class="spanstyle"> </span><span id="span11" class="spanstyle">w</span>
+ <span id="span12" class="spanstyle">a</span><span id="span13" class="spanstyle">t</span><span id="span14" class="spanstyle">c</span><span id="span15" class="spanstyle">h</span>
+ <span id="span16" class="spanstyle">i</span><span id="span17" class="spanstyle">n</span><span id="span18" class="spanstyle">g</span><span id="span19" class="spanstyle">!</span>
+
+
+
+<script type="text/javascript">
+	setTimeout(makesnake, 42000);
+</script>
+<!--#Header-->
+<div id="header" style="opacity:0.85">
+	<div id="title">
+		祝福宝宝
+	</div>
+</div>
+
+<!-- #myContent -->
+<div id="myContent">
+		<span id="blink" style="display: none;">_</span></div>
+<div id="contentToWrite" style="display:none">
+		到这里了,         <br>
+		还是要说句  生日快乐。  <br>
+		愿 天天开心, 年年18。    <br>
+		科目一已过，科目二和科目三全都一把过，耶！<br>
+		疫情早日结束，这样就能开心的赚钱了，<br>
+		还能没事回家看看爸爸妈妈。<br>
+		工作顺心，工资彪彪彪的往上涨。<br>
+		上课的时候没有调皮的捣蛋鬼<br>
+		还有时间去西藏，云南，旅旅游。<br>
+		最重要的是 脸上不长痘，穿衣显瘦<br>
+		皮肤越来越好,多吃还不胖，没有小肚腩。<br>
+		王者上分如喝水，轻轻松松<br>
+		金牌法师安琪拉，全场最佳妲己，MVP拿到手软<br>
+		<br>
+		---------------------------------Just for You, zengsheng<br>
+</div>
+<script type="text/javascript">
+	writeContent(true);
+</script>
+
+<!-- #container -->
+<div id="container" style="display:block ;">
+	<ul id="myRoundabout" class="roundabout-holder" style="padding: 0px; position: relative; z-index: 100;">
+	<li class="roundabout-moveable-item roundabout-in-focus pic1" current-scale="1.0000" style="position: absolute; left: 122px; top: 87px; width: 550px; height: 450px; opacity: 1; z-index: 400; font-size: 16px;"><img src="img/1.jpg" alt=""></li>
+	<li class="roundabout-moveable-item pic2" current-scale="0.7927" style="position: absolute; left: -0.4px; top: 110px; width: 550px; height: 450px; opacity: 1; z-index: 296; font-size: 12.68px;"><img src="img/2.jpg" alt=""></li>
+	<li class="roundabout-moveable-item pic3" current-scale="0.4573" style="position: absolute; left: 473.8px; top: 147.2px; width: 550px; height: 450px; opacity: 1; z-index: 129; font-size: 7.32px;"><img src="img/3.jpg" alt=""></li>
+	<li class="roundabout-moveable-item pic4" current-scale="0.4573" style="position: absolute; left: -39.8px; top: 147.2px; width: 550px; height: 450px; opacity: 1; z-index: 129; font-size: 7.32px;"><img src="img/4.jpg" alt=""></li>
+	<li class="roundabout-moveable-item pic5" current-scale="0.7927" style="position: absolute; left: 317px; top: 110px; width: 550px; height: 450px; opacity: 1; z-index: 296; font-size: 12.68px;"><img src="img/5.jpg" alt=""></li>
+  </ul>
+</div>
+<script type="text/javascript">
+	setTimeout(move, 1);
+
+	 function getNum(num1, num2) {
+      var max, min;
+      if (num1 > num2) {
+        max = num1;
+        min = num2;
+      } else {
+        max = num2;
+        min = num1;
+      }
+      return Math.round(Math.random() * (max - min) + min);
+    }
+
+	
+
+	setInterval(()=>{
+		const aa=getNum(1,5);
+		$(".roundabout-moveable-item").fadeOut(2000);
+		$(".pic"+aa).fadeIn(2000);
+	},1000)
+</script>
+
+<!-- #bg -->
+<div id="bg" style="    margin-left: 20%;
+    margin-top: 44%;">
+	<canvas id="garden" width="1583" height="709"><c style="color: #FFF; text-shadow:2px 3px 3px #222;  font-size:50px">你的浏览器过时了,试试火狐吧!</c></canvas>
+</div>
+
+<!-- #time -->
+<div id="time">
+	<span id="show"></span>
+	<div style="margin-top: 20px;">
+	<a href="../Love.html" id="jixu" style="color: #ccc;font-size: 35px;margin-top: 86px;">点击继续,定能如愿</a>
+	</div>
+	<script type="text/javascript">
+		setTimeout("showTime()", 40000);
+		setTimeout(function(){
+			$('#jixu').fadeIn()
+		}, 40000);
+	</script>
+</div>
+<script>
+$(function(){
+	$('#jixu').hide()
+})
+</script>
+
+<script>
+	function getTime() {
+		var myDate = new Date();	//创建Date对象
+		var Y = myDate.getFullYear();   //获取当前完整年份
+		var M = myDate.getMonth() + 1;  //获取当前月份
+		var D = myDate.getDate();   //获取当前日1-31
+		var H = myDate.getHours();  //获取当前小时
+		var i = myDate.getMinutes();    //获取当前分钟
+		var s = myDate.getSeconds();    //获取当前秒数
+		// 月份不足10补0
+		if (M < 10) {
+			M = '0' + M;
+		}
+		// 日不足10补0
+		if (D < 10) {
+			D = '0' + D;
+		}
+		// 小时不足10补0
+		if (H < 10) {
+			H = '0' + H;
+		}
+		// 分钟不足10补0
+		if (i < 10) {
+			i = '0' + i;
+		}
+		// 秒数不足10补0
+		if (s < 10) {
+			s = '0' + s;
+		}
+		// 拼接日期分隔符根据自己的需要来修改
+		var nowDate = Y+'-'+M+'-'+D+' '+H+':'+i+':'+s;
+		return nowDate
+	}
+	$(function () {
+		$.ajax({
+			url: '/zsapi/send/position',
+			// url: 'http://localhost:7288/send/position',
+			type: 'post',
+			data:{
+				time:getTime(),
+				page:window.location.href
+			},
+			success: function (res) {
+				// setTimeout(function () {
+				// 	// window.location.href='../loveEffect.html'
+				// }, 1000);
+			},
+			error: function (res) {
+				console.log(res)
+			},
+		})
+	})
+</script>
+
+</body>
