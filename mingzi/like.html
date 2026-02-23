@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        #gg {
+            width: 100px;
+            height: 100px;
+            /*background: red;*/
+            position: absolute;
+            top: 40%;
+            left: 20%;
+        }
+
+        .miss {
+            display: none;
+            font-size: 50px;
+            position: absolute;
+            top: 9%;
+            left: 46%;
+        }
+    </style>
+</head>
+
+<body>
+    <img src='./like.jpg' />
+    <div class='miss' id="miss">彭元慧我想你</div>
+    <div id='gg'></div>
+
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#gg').click(function () {
+                console.log('ToLink clicked');
+                $("#miss").fadeIn("slow");
+            })
+        });
+    </script>
+
+
+</body>
+
+</html>

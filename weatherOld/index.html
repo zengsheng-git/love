@@ -1,0 +1,373 @@
+<!--
+ * @Author: voanit
+ * @Date: 2021-03-21 15:33:49
+ * @LastEditors: 黄宇/hyuishine
+ * @LastEditTime: 2021-03-21 21:56:38
+ * @Description: 
+ * @Email: hyuishine@gmail.com
+ * @Company: 3xData
+ * @youWant: add you want
+ * @Descripttion: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.4.7/dist/vuetify.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link href="./style.css" rel="stylesheet">
+  <title>宝宝，早上好</title>
+</head>
+
+<body>
+  <div id="app" class="background">
+    <!--<img src="./rainyday.jpg" style="position: absolute;opacity: 0.5;"/>-->
+    <v-app id="inspire" style="background:none;">
+      <div class="banner_bg" :style="{ background: numPic}"></div>
+      <div class="weatherContainer">
+        <!-- 卡片外置初始化动画 -->
+        <svg id="back">
+          <radialGradient id="SVGID_1_" cx="0" cy="0" r="320.8304" gradientUnits="userSpaceOnUse">
+            <stop offset="0" style="stop-color:#FFDE17;stop-opacity:0.7" />
+            <stop offset="1" style="stop-color:#FFF200;stop-opacity:0" />
+          </radialGradient>
+          <path id="sunburst" style="fill:url(#SVGID_1_);" d="M0,319.7c-18.6,0-37.3-1.6-55.5-4.8L-7.8,41.4c5.1,0.9,10.6,0.9,15.7,0L56,314.8C37.6,318,18.8,319.7,0,319.7z
+			 M-160.8,276.6c-32.5-18.8-61.3-42.9-85.5-71.6L-34,26.2c3.4,4.1,7.4,7.4,12,10.1L-160.8,276.6z M161.3,276.4L22.1,36.2
+			c4.5-2.6,8.6-6,12-10.1l212.6,178.5C222.5,233.4,193.8,257.6,161.3,276.4z M-302.5,108.3C-315.4,73-321.9,36-322-1.8l277.6-0.5
+			c0,5.3,0.9,10.4,2.7,15.2L-302.5,108.3z M302.6,107.8L41.8,12.8c1.7-4.7,2.6-9.7,2.6-14.9c0-0.3,0-0.6,0-1H322l0-1.3l0,1.9
+			C322,35.4,315.5,72.5,302.6,107.8z M-41.8-17.5l-261-94.5c12.8-35.4,31.6-68,55.8-96.9L-34.1-30.8C-37.5-26.8-40.1-22.3-41.8-17.5z
+			 M41.7-17.7c-1.8-4.8-4.4-9.3-7.8-13.3l212-179.2c24.3,28.8,43.3,61.3,56.3,96.6L41.7-17.7z M-22.2-40.8l-139.6-240
+			c32.7-19,68.1-32,105.2-38.6L-8-46.1C-13-45.2-17.8-43.4-22.2-40.8z M22-40.9c-4.4-2.6-9.2-4.3-14.2-5.1l47.1-273.6
+			c37.2,6.4,72.7,19.2,105.4,38L22-40.9z" />
+        </svg>
+        <!--效果预览：-->
+        <nav style="display: none;position: relative;">
+          <ul>
+            <li><a id="button-snow" class="active"><i class="wi wi-snow"></i></a></li>
+            <li><a id="button-wind"><i class="wi wi-strong-wind"></i></a></li>
+            <li><a id="button-rain"><i class="wi wi-rain"></i></a></li>
+            <li><a id="button-thunder"><i class="wi wi-lightning"></i></a></li>
+            <li><a id="button-sun"><i class="wi wi-day-sunny"></i></a></li>
+          </ul>
+        </nav>
+        <!--<div>
+          <v-row align-content="center" justify="center">
+            <v-col cols="10">
+              <v-combobox v-model="address" :items="cityData" prepend-icon="mdi-map-marker" label="查询天气"
+                :loading="weatherLoading" hint="输入地名查询，如:南昌市红谷滩区">
+                <template v-slot:item>
+                  <v-list dense>
+                    <v-list-item @click="searchWeather(item.code)" v-for="(item, i) in cityData" :key="i">
+                      {{ item.area + '——————' + item.code}}</v-list-item>
+                  </v-list>
+                </template>
+              </v-combobox>
+            </v-col>
+            <v-col cols="2">
+              <v-btn :loading="searchLoading" color="grey darken-3" icon @click="searchAddress()"
+                style="margin: 16px 0;">
+                <v-icon color="grey darken-3">
+                  mdi-cloud-search-outline
+                </v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-card></v-card>
+        </div>-->
+
+        <div id="card" class="weather">
+          <!-- 卡片内置动画 -->
+          <svg id="inner">
+            <defs>
+              <path id="leaf"
+                d="M41.9,56.3l0.1-2.5c0,0,4.6-1.2,5.6-2.2c1-1,3.6-13,12-15.6c9.7-3.1,19.9-2,26.1-2.1c2.7,0-10,23.9-20.5,25 c-7.5,0.8-17.2-5.1-17.2-5.1L41.9,56.3z" />
+            </defs>
+            <circle id="sun" style="fill: #F7ED47" cx="0" cy="0" r="50" />
+            <g id="layer3"></g>
+            <g id="cloud3" class="cloud"></g>
+            <g id="layer2"></g>
+            <g id="cloud2" class="cloud"></g>
+            <g id="layer1"></g>
+            <g id="cloud1" class="cloud"></g>
+          </svg>
+          <!-- 卡片内置天气信息 -->
+          <div class="details">
+
+            <div>
+              <div>{{nowDate}}</div>
+              <div class="city">{{ weatherData.province+weatherData.area }}<span>&nbsp;&nbsp;{{weatherData.lowest}}
+                  ~{{weatherData.highest}} </span></div>
+              <div class="temp">{{ weatherData.real?.replace("℃","") }}<span>c</span></div>
+            </div>
+
+            <div class="right">
+              <div id="date">
+                {{ weatherData.wind + weatherData.windspeed + 'km/h' +
+                '&nbsp;&nbsp;湿度' + weatherData.humidity+'%' }}
+              </div>
+              <div id="summary">{{weatherData.weather}}</div>
+            </div>
+
+
+          </div>
+          <div class="dibu">
+            <div class="tips">{{ weatherData?.tips}}</div>
+          </div>
+        </div>
+
+        <div id="joke" class="joke">
+          <div class="biaoti">每日一笑</div>
+          <div class="joketitle">{{joke.title}}</div>
+          <div class="content">{{joke.content}}</div>
+        </div>
+        <!-- 卡片外置动画 -->
+        <svg id="outer"></svg>
+      </div>
+    </v-app>
+  </div>
+  <!-- <script src="index.js"></script> -->
+  <script>
+    var app = new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data() {
+        return {
+          cityCode: null,
+          timer: null,
+          nowDate: '',
+          address: '456',
+          numPic: 0,
+          joke: {
+            title: '',
+            content: ''
+          },
+          // 搜索到的信息
+          cityData: [
+            { text: '南昌市', area: '南昌市', code: '360100' }
+          ],
+          weatherData: {
+            city: null,
+            adcode: null,
+            city: null,
+            weather: null,
+            winddirection: null,
+            windpower: null,
+            humidity: null,
+            temperature: null,
+            reporttime: null
+          },
+          curCity: null,
+          weather: null,
+          dayInfo: null,
+          celsius: null,
+          weatherLoading: false,
+          searchLoading: false
+        }
+      },
+      created() {
+        document.write("<script src='index.js'><\/script>");
+      },
+      beforeDestroy() {
+        clearInterval(this.timer);
+      },
+      mounted() {
+        this.getWeather(360100);
+
+        this.numPic = `url(./wanziPic/${this.getNum(1, 86)}.jpg)`;
+
+        let that = this
+        this.timer = setInterval(() => {
+          that.nowDate = that.nowTime()
+        }, 1000)
+
+
+        this.getjoke()
+      },
+      methods: {
+        searchWeather(code) {
+          this.getWeather(code)
+        },
+
+        nowTime() {
+          var date = new Date() //获取当前系统日期
+          var y = date.getFullYear() //获取年
+          var m = date.getMonth() + 1 //获取月
+          var d = date.getDate() //获取日
+          var h = date.getHours() //获取时
+          var min = date.getMinutes() //获取分
+          var s = date.getSeconds() //获取秒
+          let str = `${y}-${m}-${d} ${h < 10 ? '0' + h : h}:${min < 10 ? '0' + min : min}:${s < 10 ? '0' + s : s}`
+          return str
+        },
+        getNum(num1, num2) {
+          var max, min;
+          if (num1 > num2) {
+            max = num1;
+            min = num2;
+          } else {
+            max = num2;
+            min = num1;
+          }
+          return Math.round(Math.random() * (max - min) + min);
+        },
+        searchAddress() {
+          this.searchLoading = true
+          this.getCityCode(this.address).then((data) => {
+            this.searchLoading = false
+          })
+        },
+
+        // 获取城市编码，有多个时将结果放入待选框
+        getCityCode(address) {
+          this.weatherLoading = true
+          let url = "https://restapi.amap.com/v3/geocode/geo?address=" + address + "&key=9ab8ae8a1a5ebca88a3996e067b5fa68"
+          return new Promise(resolve => {
+            $.get(url, (data) => {
+              let areaData = []
+              try {
+                data.geocodes.forEach(obj => {
+                  areaData.push(
+                    {
+                      text: obj.formatted_address,
+                      area: obj.formatted_address,
+                      code: obj.adcode
+                    }
+                  )
+                })
+
+                this.cityData = areaData
+                // 如果只有一个，就默认搜索
+                if (data.geocodes.length === 1) {
+                  this.getWeather(data.geocodes[0].adcode)
+                } else if (data.geocodes.length === 0) {
+                  this.weatherLoading = false
+                  alert('请重试')
+                }
+              } catch (error) {
+                alert('程序错误，可能网络原因，请重试')
+                this.weatherLoading = false
+              }
+              resolve(data)
+            }
+            );
+          })
+        },
+
+        getWeather(cityCode) {
+          // let url = "https://restapi.amap.com/v3/weather/weatherInfo?extensions=all&city=" + cityCode + "&key=9ab8ae8a1a5ebca88a3996e067b5fa68"
+          //let url = "https://restapi.amap.com/v3/weather/weatherInfo?city=" + cityCode + "&key=9ab8ae8a1a5ebca88a3996e067b5fa68"
+          let url = "https://apis.tianapi.com/tianqi/index?key=ed093853d90aaac3900c09d9a80a6283&city=101250101&type=1"
+          //101250801  娄底
+          //101250101  长沙
+          $.get(url, (data) => {
+            //console.log(data)
+            //console.log(JSON.stringify(data));
+            // data = { "code": 200, "msg": "success", "data": { "city": "长沙", "city_en": "changsha", "province": "湖南", "province_en": "hunan", "city_id": "101250101", "date": "2022-12-30", "update_time": "2022-12-30 16:01:47", "weather": "晴", "weather_code": "qing", "temp": "9", "min_temp": "0", "max_temp": "11", "wind": "东风", "wind_speed": "1级", "wind_scale": "4km/h", "rain": "0", "rain_24h": "0", "humidity": "62%", "visibility": "4km", "pressure": "1026", "tail_number": "", "air": "102", "air_pm25": "76", "sunrise": "07:19", "sunset": "17:41", "aqi": { "air": "102", "air_level": "轻度", "air_tips": "空气好，除极少数对污染物特别敏感的人群以外，对公众没有危害！", "pm25": "76", "pm10": "93", "co": "0.6", "no2": "19", "so2": "5", "o3": "72" }, "index": { "xiche": { "name": "洗车指数", "level": "较不适宜", "content": "预计今日天气较差，不是洗车的最佳时机，等等好天气再洗吧。" }, "ganmao": { "name": "感冒指数", "level": "高发", "content": "感冒高发期，尽量避免外出，外出戴口罩防护。" }, "yundong": { "name": "运动指数", "level": "适宜", "content": "预计今日整体气象条件尚可，大部分人可以外出锻炼，但敏感人群要注意天气变化，提前做好调整。" }, "huazhuang": { "name": "化妆指数", "level": "暂无", "content": "" }, "chuangyi": { "name": "穿衣指数", "level": "风衣", "content": "预计今日天气有点冷，请穿秋冬过渡的服装出门吧。建议着风衣，外套，加绒卫衣等，既舒适，又时尚。" }, "ziwaixian": { "name": "紫外线强度指数", "level": "强", "content": "紫外线辐射强，建议涂擦SPF20左右、PA++的防晒护肤品。" } }, "alarm": [{ "title": "长沙市气象局发布大雾黄色预警[Ⅲ级/较重]", "level": "黄色", "type": "大雾预警", "tips": "", "content": "长沙市气象台2022年12月30日6时10分发布大雾黄色预警信号：预计望城区30日清晨至上午将出现能见度不足500米的雾，请注意防范。" }], "hour": [{ "time": "2022-12-29 20:00:00", "temp": "4", "wea": "多云", "wea_code": "duoyun", "wind": "东风", "wind_level": "<3级" }, { "time": "2022-12-29 21:00:00", "temp": "4", "wea": "多云", "wea_code": "duoyun", "wind": "南风", "wind_level": "<3级" }, { "time": "2022-12-29 22:00:00", "temp": "4", "wea": "多云", "wea_code": "duoyun", "wind": "西风", "wind_level": "<3级" }, { "time": "2022-12-29 23:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 00:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 01:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 02:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 03:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 04:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 05:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 06:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 07:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 08:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "东风", "wind_level": "<3级" }, { "time": "2022-12-30 09:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 10:00:00", "temp": "4", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 11:00:00", "temp": "6", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 12:00:00", "temp": "6", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 13:00:00", "temp": "7", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 14:00:00", "temp": "8", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 15:00:00", "temp": "9", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 16:00:00", "temp": "9", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 17:00:00", "temp": "9", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 18:00:00", "temp": "8", "wea": "晴", "wea_code": "qing", "wind": "东南风", "wind_level": "<3级" }, { "time": "2022-12-30 19:00:00", "temp": "6", "wea": "晴", "wea_code": "qing", "wind": "西南风", "wind_level": "<3级" }, { "time": "2022-12-30 20:00:00", "temp": "5", "wea": "晴", "wea_code": "qing", "wind": "西北风", "wind_level": "<3级" }, { "time": "2022-12-30 21:00:00", "temp": "4", "wea": "晴", "wea_code": "qing", "wind": "西南风", "wind_level": "<3级" }, { "time": "2022-12-30 22:00:00", "temp": "4", "wea": "晴", "wea_code": "qing", "wind": "东南风", "wind_level": "<3级" }, { "time": "2022-12-30 23:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 00:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 01:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 02:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 03:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 04:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-31 05:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-31 06:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-31 07:00:00", "temp": "0", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }] }, "time": 1672388280, "log_id": "467364082740416512" }
+            console.log(data)
+            this.weatherLoading = false
+            if (data.msg === "success") {
+              this.weatherData = data.result
+
+              let weather = data.result.weather
+              let type = ['晴', '雪', '风', '云', '阴', '雷', '雨',]
+              let btnName = ['button-sun', 'button-snow', 'button-wind', 'button-thunder', 'button-rain']
+              let btnDom
+              let result = null
+
+              type.forEach((type, i) => {
+                if (weather.indexOf(type) != -1) {
+                  result = i
+                  return result
+                }
+              });
+              console.log(result)
+              switch (result) {
+                case 0:
+                  btnDom = document.getElementById(btnName[0])
+                  break
+                case 1:
+                  btnDom = document.getElementById(btnName[1])
+                  break
+                case 2:
+                case 3:
+                case 4:
+                  btnDom = document.getElementById(btnName[2])
+                  break
+                case 5:
+                  btnDom = document.getElementById(btnName[3])
+                  break
+                case 6:
+                  btnDom = document.getElementById(btnName[4])
+                  break
+                default:
+                  btnDom = document.getElementById(btnName[0])
+                  break
+              }
+
+              btnDom.click()
+
+            }
+          }
+          );
+
+
+          // 
+
+
+        },
+        
+        getjoke() {
+          $.get('https://v2.alapi.cn/api/joke/random?token=VkLW1ccjYAVtvXH2', (data) => {
+            //console.log(data)
+            //console.log(JSON.stringify(data));
+            // data = { "code": 200, "msg": "success", "data": { "city": "长沙", "city_en": "changsha", "province": "湖南", "province_en": "hunan", "city_id": "101250101", "date": "2022-12-30", "update_time": "2022-12-30 16:01:47", "weather": "晴", "weather_code": "qing", "temp": "9", "min_temp": "0", "max_temp": "11", "wind": "东风", "wind_speed": "1级", "wind_scale": "4km/h", "rain": "0", "rain_24h": "0", "humidity": "62%", "visibility": "4km", "pressure": "1026", "tail_number": "", "air": "102", "air_pm25": "76", "sunrise": "07:19", "sunset": "17:41", "aqi": { "air": "102", "air_level": "轻度", "air_tips": "空气好，除极少数对污染物特别敏感的人群以外，对公众没有危害！", "pm25": "76", "pm10": "93", "co": "0.6", "no2": "19", "so2": "5", "o3": "72" }, "index": { "xiche": { "name": "洗车指数", "level": "较不适宜", "content": "预计今日天气较差，不是洗车的最佳时机，等等好天气再洗吧。" }, "ganmao": { "name": "感冒指数", "level": "高发", "content": "感冒高发期，尽量避免外出，外出戴口罩防护。" }, "yundong": { "name": "运动指数", "level": "适宜", "content": "预计今日整体气象条件尚可，大部分人可以外出锻炼，但敏感人群要注意天气变化，提前做好调整。" }, "huazhuang": { "name": "化妆指数", "level": "暂无", "content": "" }, "chuangyi": { "name": "穿衣指数", "level": "风衣", "content": "预计今日天气有点冷，请穿秋冬过渡的服装出门吧。建议着风衣，外套，加绒卫衣等，既舒适，又时尚。" }, "ziwaixian": { "name": "紫外线强度指数", "level": "强", "content": "紫外线辐射强，建议涂擦SPF20左右、PA++的防晒护肤品。" } }, "alarm": [{ "title": "长沙市气象局发布大雾黄色预警[Ⅲ级/较重]", "level": "黄色", "type": "大雾预警", "tips": "", "content": "长沙市气象台2022年12月30日6时10分发布大雾黄色预警信号：预计望城区30日清晨至上午将出现能见度不足500米的雾，请注意防范。" }], "hour": [{ "time": "2022-12-29 20:00:00", "temp": "4", "wea": "多云", "wea_code": "duoyun", "wind": "东风", "wind_level": "<3级" }, { "time": "2022-12-29 21:00:00", "temp": "4", "wea": "多云", "wea_code": "duoyun", "wind": "南风", "wind_level": "<3级" }, { "time": "2022-12-29 22:00:00", "temp": "4", "wea": "多云", "wea_code": "duoyun", "wind": "西风", "wind_level": "<3级" }, { "time": "2022-12-29 23:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 00:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 01:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 02:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 03:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 04:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 05:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 06:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 07:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 08:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "东风", "wind_level": "<3级" }, { "time": "2022-12-30 09:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 10:00:00", "temp": "4", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 11:00:00", "temp": "6", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 12:00:00", "temp": "6", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-30 13:00:00", "temp": "7", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 14:00:00", "temp": "8", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 15:00:00", "temp": "9", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 16:00:00", "temp": "9", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 17:00:00", "temp": "9", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-30 18:00:00", "temp": "8", "wea": "晴", "wea_code": "qing", "wind": "东南风", "wind_level": "<3级" }, { "time": "2022-12-30 19:00:00", "temp": "6", "wea": "晴", "wea_code": "qing", "wind": "西南风", "wind_level": "<3级" }, { "time": "2022-12-30 20:00:00", "temp": "5", "wea": "晴", "wea_code": "qing", "wind": "西北风", "wind_level": "<3级" }, { "time": "2022-12-30 21:00:00", "temp": "4", "wea": "晴", "wea_code": "qing", "wind": "西南风", "wind_level": "<3级" }, { "time": "2022-12-30 22:00:00", "temp": "4", "wea": "晴", "wea_code": "qing", "wind": "东南风", "wind_level": "<3级" }, { "time": "2022-12-30 23:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 00:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 01:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 02:00:00", "temp": "3", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 03:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }, { "time": "2022-12-31 04:00:00", "temp": "2", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-31 05:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-31 06:00:00", "temp": "1", "wea": "晴", "wea_code": "qing", "wind": "东北风", "wind_level": "<3级" }, { "time": "2022-12-31 07:00:00", "temp": "0", "wea": "晴", "wea_code": "qing", "wind": "北风", "wind_level": "<3级" }] }, "time": 1672388280, "log_id": "467364082740416512" }
+            console.log(data.data)
+            if (data.msg === "success") {
+              this.joke = data.data
+
+
+            }
+          })
+        },
+
+      }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

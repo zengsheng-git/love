@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Bungee Shade";
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  color: #fff;
+  text-shadow: 5px 5px 10px rgba(255, 215, 0, 0.5);
+}
+
+@media screen and (min-width: 400px) {
+  body {
+    font-size: 3rem;
+  }
+}
+@media screen and (min-width: 800px) {
+  body {
+    font-size: 5rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 6rem;
+  }
+}
+.party-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -205%;
+  justify-content: center;
+}
+
+.party-word {
+  display: flex;
+  padding: 0.5rem 0;
+}
+
+.party {
+  -webkit-animation: jump 0.7s linear infinite;
+          animation: jump 0.7s linear infinite;
+}
+
+@-webkit-keyframes jump {
+  0% {
+    transform: translateY(0%);
+    color: white;
+  }
+  25% {
+    transform: translateY(-15%);
+  }
+  50% {
+    transform: translateY(0%);
+    color: gold;
+  }
+  75% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0%);
+    color: white;
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0%);
+    color: white;
+  }
+  25% {
+    transform: translateY(-15%);
+  }
+  50% {
+    transform: translateY(0%);
+    color: gold;
+  }
+  75% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0%);
+    color: white;
+  }
+}
+

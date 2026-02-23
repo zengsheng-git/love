@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://v.bootstrapmb.com/2020/1/mclx7158/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>生日烟火开启啦 </title>
+    <script type="text/javascript" src="./Happy 2020!_files//jquery.min.js.下载"></script>
+</head>
+
+<body style="background: black;">
+    <link href="./Happy 2020!_files/css" rel="stylesheet">
+    <link href="./Happy 2020!_files/css(1)" rel="stylesheet">
+    <script src="./Happy 2020!_files/gameCanvas-4.0.js.下载"></script>
+    <script src="./Happy 2020!_files/script.js.下载"></script>
+    <!--<canvas width="1920" height="891"
+        style="position: fixed; top: 0px; left: 0px;"></canvas>-->
+
+<script>
+
+$(function(){
+   
+    setTimeout(()=>{
+       const flag=window.localStorage.getItem('reflash');
+       const state=flag??'';
+       if(state.length){
+
+       }else{
+          window.location.reload();
+          window.localStorage.setItem('reflash','123')
+       }
+    },500)
+    setTimeout(()=>{
+        window.location.href='../text1/index.html';
+        window.localStorage.setItem('reflash','')
+    },15000)
+})
+</script>
+
+
+<script>
+    function getTime() {
+        var myDate = new Date();	//创建Date对象
+        var Y = myDate.getFullYear();   //获取当前完整年份
+        var M = myDate.getMonth() + 1;  //获取当前月份
+        var D = myDate.getDate();   //获取当前日1-31
+        var H = myDate.getHours();  //获取当前小时
+        var i = myDate.getMinutes();    //获取当前分钟
+        var s = myDate.getSeconds();    //获取当前秒数
+        // 月份不足10补0
+        if (M < 10) {
+            M = '0' + M;
+        }
+        // 日不足10补0
+        if (D < 10) {
+            D = '0' + D;
+        }
+        // 小时不足10补0
+        if (H < 10) {
+            H = '0' + H;
+        }
+        // 分钟不足10补0
+        if (i < 10) {
+            i = '0' + i;
+        }
+        // 秒数不足10补0
+        if (s < 10) {
+            s = '0' + s;
+        }
+        // 拼接日期分隔符根据自己的需要来修改
+        var nowDate = Y+'-'+M+'-'+D+' '+H+':'+i+':'+s;
+        return nowDate
+    }
+    $(function () {
+        $.ajax({
+            url: '/zsapi/send/position',
+            // url: 'http://localhost:7288/send/position',
+            type: 'post',
+            data:{
+                time:getTime(),
+                page:window.location.href
+            },
+            success: function (res) {
+                // setTimeout(function () {
+                //     // window.location.href='../loveEffect.html'
+                // }, 1000);
+            },
+            error: function (res) {
+                console.log(res)
+            },
+        })
+    })
+</script>
+
+</body>
+
+</html>

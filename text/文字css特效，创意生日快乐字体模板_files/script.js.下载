@@ -1,0 +1,6 @@
+var delay = 0;
+var partys = document.querySelectorAll('.party');
+for(var i = 0; i < partys.length; i++) {  
+  partys[i].style.animationDelay = delay + 's';
+  delay +=.1;
+}

@@ -1,0 +1,139 @@
+
+<!-- saved from url=(0085)https://www.17sucai.com/pins/demo-show?id=4539&st=3QWHKqxNJUe33WHAceKlAQ&e=1664019951 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <title>jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他/她)</title>
+
+    <link href="./jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他_她)_files/demo.css" rel="stylesheet" media="all">
+
+    <!--[if IE]>
+
+    <style type="text/css">
+        li.remove_frame a {
+            padding-top: 5px;
+            background-position: 0px -3px;
+        }
+    </style>
+
+    <![endif]-->
+
+    <script src="./jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他_她)_files/hm.js.下载"></script><script type="text/javascript" src="./jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他_她)_files/jquery.min.js.下载"></script>
+    <script type="text/javascript" src="./jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他_她)_files/jquery.qrcode.min.js.下载"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function fixHeight() {
+                var headerHeight = $("#switcher").height();
+                $("#iframe").attr("height", $(window).height()-54+ "px");
+            }
+            $(window).resize(function () {
+                fixHeight();
+            }).resize();
+
+                        $('.icon-monitor').addClass('active');
+            
+            $(".icon-mobile-3").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width-3');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-mobile-2").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width-2');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-mobile-1").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width');
+                $('.icon-tablet,.icon-mobile,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-tablet").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('tablet-width');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-monitor").click(function () {
+                $("#by").css("overflow-y", "hidden");
+                $('#iframe-wrap').removeClass().addClass('full-width');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+	function Responsive($a) {
+		if ($a == true) $("#Device").css("opacity", "100");
+		if ($a == false) $("#Device").css("opacity", "0");
+		$('#iframe-wrap').removeClass().addClass('full-width');
+		$('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+		$(this).addClass('active');
+		return false;
+	};
+    </script>
+	
+	<script type="text/javascript" src="./jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他_她)_files/protect.js.下载"></script>
+	
+</head>
+<body id="by">
+
+<div id="switcher">
+    <div class="center">
+        <ul>
+            <div id="Device">
+                <li class="device-monitor"><a href="javascript:"><div class="icon-monitor active"></div></a></li>
+                <li class="device-mobile"><a href="javascript:"><div class="icon-tablet"></div></a></li>
+                <li class="device-mobile"><a href="javascript:"><div class="icon-mobile-1"></div></a></li>
+                <li class="device-mobile-2"><a href="javascript:"><div class="icon-mobile-2"></div></a></li>
+                <li class="device-mobile-3"><a href="javascript:"><div class="icon-mobile-3"></div></a></li>
+            </div>
+            <li class="top2">
+                <a href="https://www.17sucai.com/pins/demo-show?id=4539&amp;st=3QWHKqxNJUe33WHAceKlAQ&amp;e=1664019951#">手机二维码预览</a>
+                <div class="vm">
+                    <div id="output"><canvas width="150" height="150"></canvas></div>
+                    <p style="color:#808080;margin:10px 0 0 0;">扫一扫，直接在手机上打开</p>
+                </div>
+            </li>
+            <li class="logoTop">
+                <a href="https://www.17sucai.com/pins/4539.html">jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他/她)</a>            <script type="text/javascript">
+                jQuery('#output').qrcode({width:150,height: 150,text: window.location.href});
+            </script>
+            </li><li class="remove_frame"><a href="https://show.17sucai.com/preview/27774/2014-03-19/jQuery+Html5%E5%AE%9E%E7%8E%B0%E5%94%AF%E7%BE%8E%E8%A1%A8%E7%99%BD%E5%8A%A8%E7%94%BB%E4%BB%A3%E7%A0%81/index.html" title="移除框架"></a></li>
+        </ul>
+    </div>
+</div>
+<!-- 
+<div id="iframe-wrap">
+    <iframe id="iframe" src="" frameborder="0"  width="100%"></iframe>
+</div> -->
+  <div id="iframe-wrap"> 
+    <iframe id="iframe" src="./jQuery Html5 canvas网页电子版爱情表白动画模板代码(献给你爱的他_她)_files/index.html" frameborder="0" width="100%" height="837px"></iframe>
+</div>  
+
+<!--百度流量统计代码-->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?780bfd674747107457b04f9951920b24";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+</body></html>

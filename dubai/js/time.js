@@ -13,31 +13,16 @@ function showTime() {
 	minutes = "0" + minutes; 
 	if (seconds < 10) 
 	seconds = "0" + seconds; 
-
-
-
-	   var date = new Date() //获取当前系统日期
-            var y = date.getFullYear() //获取年
-            var m = date.getMonth() + 1 //获取月
-            var d = date.getDate() //获取日
-            var h = date.getHours() //获取时
-            var min = date.getMinutes() //获取分
-            var s = date.getSeconds() //获取秒
-           let str = `${y}-${m}-${d} ${h<10 ? '0'+h : h}:${min<10 ? '0'+min : min}:${s<10 ? '0'+s : s}`
-
-
-	var currentTimeString = 
-		//"元慧同学:<br>"
-		//+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生日快乐。<br> "
-		//+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp天天开心。<br> "
-		//+ "&nbsp&nbsp&nbsp&nbsp&nbsp"
-		//+ "<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:35px\" >" + days +" </c>day " 
-		//+ "<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:35px\" >" + hours+" </c>hour "
-		//+"<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:35px\" >" + minutes+" </c>min "
-		//+"<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:35px\" >" +seconds+" </c>sec<br>"
-		//+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp只愿执子之手,与子偕老.<br>"
-		//+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"
-			"<c style=\" font-size:70px\" >"+str+"</c>"; 
+	var currentTimeString = "Dear Yue:<br>"
+		+ "I have been in love with you for:<br> "
+		+ "&nbsp&nbsp&nbsp&nbsp&nbsp"
+		+ "<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:24px\" >" + days +" </c>day " 
+		+ "<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:24px\" >" + hours+" </c>hour "
+		+"<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:24px\" >" + minutes+" </c>min "
+		+"<c style=\"color: #CCFF99; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:24px\" >" +seconds+" </c>sec<br>"
+		+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp只愿执子之手,与子偕老.<br>"
+		+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"
+		+	"<c style=\"color: #CCCCCC; text-shadow:2px 3px 3px #222; font-family:Microsoft YaHei; font-size:20px\" >----Dingxue   2018-10-04</c>"; 
 	document.getElementById("show").innerHTML=currentTimeString;  //改这地方
 	window.setTimeout("showTime()", 1000); 
 } 

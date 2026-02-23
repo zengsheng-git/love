@@ -1,0 +1,124 @@
+<!-- saved from url=(0086)https://www.17sucai.com/pins/demo-show?id=29896&st=YtXWOa0Thd8TFv4jzWenHQ&e=1669993545 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <title>html5 canvas生日快乐文字烟花背景动画特效</title>
+
+    <link href="./html5 canvas生日快乐文字烟花背景动画特效_files/demo.css" rel="stylesheet" media="all">
+
+    <!--[if IE]>
+
+    <style type="text/css">
+        li.remove_frame a {
+            padding-top: 5px;
+            background-position: 0px -3px;
+        }
+    </style>
+
+    <![endif]-->
+
+    <script src="./html5 canvas生日快乐文字烟花背景动画特效_files/hm.js.下载"></script>
+    <script type="text/javascript" src="./html5 canvas生日快乐文字烟花背景动画特效_files/jquery.min.js.下载"></script>
+    <script type="text/javascript" src="./html5 canvas生日快乐文字烟花背景动画特效_files/jquery.qrcode.min.js.下载"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function fixHeight() {
+                var headerHeight = $("#switcher").height();
+                $("#iframe").attr("height", $(window).height() - 54 + "px");
+            }
+            $(window).resize(function () {
+                fixHeight();
+            }).resize();
+
+            $('.icon-monitor').addClass('active');
+
+            $(".icon-mobile-3").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width-3');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-mobile-2").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width-2');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-mobile-1").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width');
+                $('.icon-tablet,.icon-mobile,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-tablet").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('tablet-width');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-monitor").click(function () {
+                $("#by").css("overflow-y", "hidden");
+                $('#iframe-wrap').removeClass().addClass('full-width');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function Responsive($a) {
+            if ($a == true) $("#Device").css("opacity", "100");
+            if ($a == false) $("#Device").css("opacity", "0");
+            $('#iframe-wrap').removeClass().addClass('full-width');
+            $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+            $(this).addClass('active');
+            return false;
+        };
+    </script>
+
+    <script type="text/javascript" src="./html5 canvas生日快乐文字烟花背景动画特效_files/protect.js.下载"></script>
+
+</head>
+
+<body id="by" style="background:#000;">
+
+
+    <div id="iframe-wrap">
+        <iframe id="iframe" src="./html5 canvas生日快乐文字烟花背景动画特效_files/index.html" frameborder="0" width="100%"
+            height="812px"></iframe>
+    </div>
+
+    <!--百度流量统计代码-->
+    <!--<script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?780bfd674747107457b04f9951920b24";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>-->
+
+<script>
+
+//$(function(){
+//    setTimeout(()=>{
+//        window.location.href='../text1/index.html'
+//    },17000)
+//})
+</script>
+
+</body>
+</html>
